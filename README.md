@@ -25,8 +25,8 @@ All quantities, apart from the needed variables, the metric and the inverse metr
 * DerStressEn(*chris*,*T*): computes the conservation of the stress-energy tensor given the Christoffel symbol *chris* and the controvariant stress-energy tensor *T*, $\nabla_\mu T^{\mu\nu}$.
 * derDerScal(*chris*, $\phi$): computes the double covariant derivative of a scalar field given the Christoffel symbol *chris* and the scalar field $\phi$, $\nabla_\mu\nabla_\nu\phi$.
 * boxScal(*InvMet*,*chris*, $\phi$): computes the d'Alembertian of a scalar field given the inverse of the metric *InvMet*, the Christoffel symbol *chris* and the scalar field $\phi$, $\Box\phi$.
-* dScaldScal(\phi): computes the product of two derivatives of a scalar field given the scalar field $\phi$, $\nabla_\mu\phi\nabla_\nu\phi=\partial_\mu\phi\partial_\nu\phi$.
-* dScaldScalContr(*InvMet*, \phi): computes the contracted product of two derivatives of a scalar field given the inverse of the metric *InvMet* and the scalar field $\phi$, $\nabla_\mu\phi\nabla^\mu\phi=\partial_\mu\phi\partial^\mu\phi$.
+* dScaldScal($\phi$): computes the product of two derivatives of a scalar field given the scalar field $\phi$, $\nabla_\mu\phi\nabla_\nu\phi=\partial_\mu\phi\partial_\nu\phi$.
+* dScaldScalContr(*InvMet*, $\phi$): computes the contracted product of two derivatives of a scalar field given the inverse of the metric *InvMet* and the scalar field $\phi$, $\nabla_\mu\phi\nabla^\mu\phi=\partial_\mu\phi\partial^\mu\phi$.
 
 ## NSexample.ipynb
 
