@@ -36,7 +36,7 @@ function christoffel(Met::AbstractMatrix{T}, Metuu::AbstractMatrix{T}) where T
 end
 
 #covariant partial derivative of christoffel symbol
-function derChris(Met::AbstractMatrix{T}) where T
+function derChris(chris::AbstractMatrix{Matrix})
     DΓ = Matrix{Matrix}(undef,4,4) 
     for i = 1:n
         for j = 1:n
@@ -44,7 +44,7 @@ function derChris(Met::AbstractMatrix{T}) where T
             for l = 1:n
                 for k = 1:n
                     Inset[l,k] = transpose(
-                            Symbolics.gradient(Met[i,j][l],[t,r,θ,ϕ]))[k]
+                            Symbolics.gradient(chris[i,j][l],[t,r,θ,ϕ]))[k]
                 end
             end
             DΓ[i,j] = Inset
@@ -140,8 +140,7 @@ function gaussBonnet(Met::AbstractMatrix{T},Metuu::AbstractMatrix{T},riem::Abstr
 end
 
 #stress-energy tensor T^{ab}
-function stressEnergy(Metuu::AbstractMatrix{T}, 
-        vel::AbstractMatrix{T},ϵ,p) where T
+function stressEnergy(Metuu::AbstractMatrix{T}, vel::AbstractMatrix{T},ϵ,p) where T
     stressEn = Matrix{Num}(undef,4,4)
     for i = 1:n
         for j = 1:n
@@ -169,8 +168,7 @@ function stressEnergydd(Met::AbstractMatrix{T}, Tuu::AbstractMatrix{T}) where T
 end
 
 #Conservation of stress-energy tensor
-function DerStressEn(chris::AbstractMatrix{Matrix}, 
-        Tuu::AbstractMatrix{T}) where T
+function DerStressEn(chris::AbstractMatrix{Matrix}, Tuu::AbstractMatrix{T}) where T
     DStressEn = Matrix{Num}(undef,1,4)
     for j = 1:n
         temp = 0
@@ -201,8 +199,7 @@ function derDerScal(chris::AbstractMatrix{Matrix}, scal::T) where T
 end
 
 #g^{ab}*D_a@D_b@φ where D is the covariant derivative and φ is a scalar field
-function boxScal(Metuu::AbstractMatrix{T}, chris::AbstractMatrix{Matrix},
-        scal::T) where T
+function boxScal(Metuu::AbstractMatrix{T}, chris::AbstractMatrix{Matrix}, scal::T) where T
     DDscal = 0
     for i = 1:n
         for j = 1:n
